@@ -250,7 +250,7 @@ ModbusRequest15::ModbusRequest15(uint8_t slaveAddress, uint16_t address, uint16_
   _slaveAddress = slaveAddress;
   _functionCode = esp32Modbus::WRITE_MULT_COILS;
   _address = address;
-  _byteCount = (static_cast<int>(1-1)/8 + 1);
+  _byteCount = (static_cast<int>(numberRegisters-1)/8 + 1);
   add(_slaveAddress);
   add(_functionCode);
   add(high(_address));
