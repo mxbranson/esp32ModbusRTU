@@ -55,10 +55,16 @@ void esp32ModbusRTU::begin(int coreID /* = -1 */) {
   if (_interval == 0) _interval = 1;  // minimum of 1msec interval
 }
 
+bool esp32ModbusRTU::readDiscreteCoils(uint8_t slaveAddress, uint16_t address, uint16_t numberCoils) {
+  ModbusRequest* request = new ModbusRequest01(slaveAddress, address, numberCoils);
+  return _addToQueue(request);
+}
+
 bool esp32ModbusRTU::readDiscreteInputs(uint8_t slaveAddress, uint16_t address, uint16_t numberCoils) {
   ModbusRequest* request = new ModbusRequest02(slaveAddress, address, numberCoils);
   return _addToQueue(request);
 }
+
 bool esp32ModbusRTU::readHoldingRegisters(uint8_t slaveAddress, uint16_t address, uint16_t numberRegisters) {
   ModbusRequest* request = new ModbusRequest03(slaveAddress, address, numberRegisters);
   return _addToQueue(request);

@@ -62,6 +62,13 @@ class ModbusRequest : public ModbusMessage {
 };
 
 // read discrete coils
+class ModbusRequest01 : public ModbusRequest {
+ public:
+  explicit ModbusRequest01(uint8_t slaveAddress, uint16_t address, uint16_t numberCoils);
+  size_t responseLength();
+};
+
+// read discrete inputs
 class ModbusRequest02 : public ModbusRequest {
  public:
   explicit ModbusRequest02(uint8_t slaveAddress, uint16_t address, uint16_t numberCoils);
