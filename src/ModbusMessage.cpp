@@ -141,7 +141,7 @@ ModbusRequest::ModbusRequest(uint8_t length) :
 ModbusRequest01::ModbusRequest01(uint8_t slaveAddress, uint16_t address, uint16_t numberCoils) :
   ModbusRequest(8) {
   _slaveAddress = slaveAddress;
-  _functionCode = esp32Modbus::READ_DISCR_INPUT;
+  _functionCode = esp32Modbus::READ_COIL;
   _address = address;
   _byteCount = numberCoils / 8 + 1;
   add(_slaveAddress);
